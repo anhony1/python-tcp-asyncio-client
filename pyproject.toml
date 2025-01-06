@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tcp-asyncio-client"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "anhony1", email = "areyes5141@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/anhony1/tcp-asyncio-client#readme"
+Issues = "https://github.com/anhony1/tcp-asyncio-client/issues"
+Source = "https://github.com/anhony1/tcp-asyncio-client"
+
+[tool.hatch.version]
+path = "src/tcp_asyncio_client/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/tcp_asyncio_client tests}"
+
+[tool.coverage.run]
+source_pkgs = ["tcp_asyncio_client", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/tcp_asyncio_client/__about__.py",
+]
+
+[tool.coverage.paths]
+tcp_asyncio_client = ["src/tcp_asyncio_client", "*/tcp-asyncio-client/src/tcp_asyncio_client"]
+tests = ["tests", "*/tcp-asyncio-client/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
